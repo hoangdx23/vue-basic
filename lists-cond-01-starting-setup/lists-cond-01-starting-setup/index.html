@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Vue Basics</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Jost:wght@400;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="styles.css" />
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+    <script src="app.js" defer></script>
+  </head>
+  <body>
+    <header>
+      <h1>Vue Course Goals</h1>
+    </header>
+    <section id="user-goals">
+      <h2>My course goals</h2>
+      <input type="text" v-model="text" />
+      <button @click="addGoals()">Add Goal</button>
+      <!-- v-if, v-else-if, v-else được sử dụng để điều khiển việc render các phần tử DOM dựa trên điều kiện. Ngoài ra nó còn bao gồm các phần tử đó trong DOM hoặc ko bao gồm, nó thực sự là về việc gắn và tách -->
+      <!-- v-show không thay đổi DOM, chỉ ẩn hiện phần tử bằng cách thay đổi thuộc tính CSS display. -->
+<!-- Điều này có thể hữu ích nếu bạn muốn giữ lại trạng thái của phần tử (ví dụ: giữ các dữ liệu nhập liệu trong một form).       -->
+      <p v-if="goals.length===0">No goals have been added yet - please start adding some!</p>
+      <ul v-else>
+        <!-- v-for là một directive trong Vue.js được sử dụng để lặp lại các phần tử trong một mảng hoặc một đối tượng và tạo ra một danh sách các phần tử dựa trên dữ liệu được cung cấp. -->
+        <li v-for="(goal, index) in goals" :key="index" @click="removeGoal(index)">{{goal}}-{{index}}
+        <input type="text"@click.stop >
+        </li>
+      </ul>
+      <!-- <ul>
+        <li v-for="(value, index ,key) in {name:'hoang',age:18}">{{value}}-{{index}}-{{key}}</li>
+      </ul>
+      <ul>
+        <li v-for="num in 10">{{num}}</li>
+      </ul> -->
+    </section>
+  </body>
+</html>
